@@ -1,0 +1,68 @@
+version: '2'
+services:
+
+  # The Application
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    container_name: laravel_ang_php
+    restart: always
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  # The Web Server
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    container_name: laravel_ang_nginx
+    restart: always
+    working_dir: /var/www
+    volumes_from:
+      - app
+    ports:
+      - 8080:80
+
+# The phpmyadmin
+  pma:
+      image: phpmyadmin/phpmyadmin
+      container_name: laravel_ang_phpmyadmin
+      restart: always
+      ports:
+        - "8000:80"
+      environment:
+        PMA_HOST: database
+        PMA_PORT: 3306
+
+# The composer
+  composer: # เป็น container สำหรับการรัน install package laravel ที่จะสั่งรันครั้งเดียวแล้วหยุดรัน container ไป
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes_from:
+      - app
+    command: "composer install" # คำสั่ง สำหรับ install package
+
+  # The Database
+  database:
+    image: mysql:5.6
+    container_name: laravel_ang_mysql
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=homestead"
+      - "MYSQL_USER=homestead"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+        - "33062:3306"
+
+volumes:
+  dbdata:
