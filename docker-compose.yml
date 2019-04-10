@@ -1,68 +1,113 @@
-version: '2'
+version: '3'
 services:
 
-  # The Application
+  #PHP Service
   app:
     build:
       context: ./
       dockerfile: app.dockerfile
-    container_name: laravel_ang_php
-    restart: always
+    image: dexterm/php
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: secret
+      DB_PORT: 3306
+      DB_HOST: db
+      #DOCKER_HOST_IP: 192.168.1.100
+      #DOCKER_HOST: tcp://docker-in-docker:2375
     working_dir: /var/www
+    extra_hosts:
+      - "internal_host:172.27.0.1" 
+      #- "dockerhost:${DOCKER_HOST_IP}"
+    ports:
+      - 9000:9000
     volumes:
       - ./:/var/www
-    environment:
-      - "DB_PORT=3306"
-      - "DB_HOST=database"
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
 
-  # The Web Server
-  web:
-    build:
-      context: ./
-      dockerfile: web.dockerfile
-    container_name: laravel_ang_nginx
-    restart: always
-    working_dir: /var/www
-    volumes_from:
-      - app
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
     ports:
-      - 8080:80
+      - "80:80"
+      #- "8000:8000"
+      #- "3000:3000"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
 
-# The phpmyadmin
+  # Forr phpmyadmin
   pma:
       image: phpmyadmin/phpmyadmin
-      container_name: laravel_ang_phpmyadmin
+      container_name: phpmyadmin
       restart: always
+      volumes:
+        - ./:/var/www
       ports:
         - "8000:80"
+      #links:
+      # - db:db  
+      depends_on:
+        - db
       environment:
-        PMA_HOST: database
+        PMA_HOST: db
         PMA_PORT: 3306
+      networks:
+        - app-network
 
-# The composer
-  composer: # เป็น container สำหรับการรัน install package laravel ที่จะสั่งรันครั้งเดียวแล้วหยุดรัน container ไป
+
+
+  #For PHP composer
+  composer: #container to install package laravel inside container
     build:
       context: ./
       dockerfile: app.dockerfile
     working_dir: /var/www
-    volumes_from:
-      - app
-    command: "composer install" # คำสั่ง สำหรับ install package
-
-  # The Database
-  database:
-    image: mysql:5.6
-    container_name: laravel_ang_mysql
-    restart: always
     volumes:
-      - dbdata:/var/lib/mysql
-    environment:
-      - "MYSQL_DATABASE=homestead"
-      - "MYSQL_USER=homestead"
-      - "MYSQL_PASSWORD=secret"
-      - "MYSQL_ROOT_PASSWORD=secret"
-    ports:
-        - "33062:3306"
+      - dbdata:/var/lib/mysql/
+      - ./:/var/www
+    command: "composer install" 
 
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33062:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: secret
+      SERVICE_TAGS: dev
+      SERVICE_NAME: db
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
 volumes:
+  .: #on host it will be current folder where docker-compose is located and inside container it will be /var/www
   dbdata:
+    driver: local
+#https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
+#GRANT ALL ON laravel.* TO 'root'@'%' IDENTIFIED BY 'secret';
+#docker-compose run --rm -w /var/www app php artisan migrate

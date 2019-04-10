@@ -13,7 +13,7 @@
 
 Route::get('/', function() {
   //  return View::make('index'); // will return app/views/index.php
-    return view('index');
+    return view('unsupported_browser');
 });
 
 //Auth::routes();
@@ -27,6 +27,15 @@ Route::group(array('prefix' => 'api'), function() {
         array('only' => array('index', 'store', 'destroy')));
 
 });
+
+
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/verify', 'VerifyOAuthController@store')->name('verify');
+Route::post('register','RegisterController@register')->name('register');
+//Route::post('oauth/token','Auth\LoginController@login')->name('oauth/token');
 
 
 Route::any('{catchall}', function() {
