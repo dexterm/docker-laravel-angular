@@ -575,9 +575,9 @@
 	    return true;
 	  };
 
-	  $authProvider.loginUrl = '/api/auth/login';
-	  $authProvider.signupUrl = '/api/auth/register';
-	  $authProvider.tokenRoot = 'data'; // compensates success response macro
+	  $authProvider.loginUrl = '/auth/login';
+	  $authProvider.signupUrl = '/auth/register';
+	  $authProvider.tokenRoot = 'token'; // compensates success response macro
 	}
 
 /***/ }),

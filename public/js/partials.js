@@ -5,6 +5,36 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('./views/app/components/coming-soon/coming-soon.component.html',
+    '<section class="content">\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-12">\n' +
+    '      <div class="box box-info">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <div class="box-tools pull-right">\n' +
+    '            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>\n' +
+    '            </button>\n' +
+    '            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <h3>Coming Soon... (Pull Requests are Welcome)</h3>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</section>\n' +
+    '');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('app.partials');
+} catch (e) {
+  module = angular.module('app.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('./views/app/components/charts-chartjs/charts-chartjs.component.html',
     '<section class="content-header">\n' +
     '  <h1>ChartJS<small>Preview sample</small></h1>\n' +
@@ -124,36 +154,6 @@ module.run(['$templateCache', function($templateCache) {
     '              </div>\n' +
     '            </div>\n' +
     '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '</section>\n' +
-    '');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('./views/app/components/coming-soon/coming-soon.component.html',
-    '<section class="content">\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-12">\n' +
-    '      <div class="box box-info">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <div class="box-tools pull-right">\n' +
-    '            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>\n' +
-    '            </button>\n' +
-    '            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <h3>Coming Soon... (Pull Requests are Welcome)</h3>\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </div>\n' +
@@ -1228,6 +1228,163 @@ try {
   module = angular.module('app.partials', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('./views/app/components/nav-sidebar/nav-sidebar.component.html',
+    '<aside class="main-sidebar">\n' +
+    '  <section class="sidebar">\n' +
+    '    <div class="user-panel">\n' +
+    '      <div class="pull-left image">\n' +
+    '        <img src="{{vm.userData.avatar}}" class="img-circle" alt="User Image" onError="this.src=\'//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16\'">\n' +
+    '      </div>\n' +
+    '      <div class="pull-left info">\n' +
+    '        <p>{{vm.userData.name | capitalize}}</p>\n' +
+    '        <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <form action="#" method="get" class="sidebar-form">\n' +
+    '      <div class="input-group">\n' +
+    '        <input type="text" name="q" class="form-control" placeholder="Search...">\n' +
+    '        <span class="input-group-btn">\n' +
+    '          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>\n' +
+    '          </button>\n' +
+    '        </span>\n' +
+    '      </div>\n' +
+    '    </form>\n' +
+    '    <ul class="sidebar-menu">\n' +
+    '      <li class="header">MAIN NAVIGATION</li>\n' +
+    '      <li>\n' +
+    '        <a ui-sref=\'app.landing\'>\n' +
+    '          <i class="fa fa-dashboard"></i> <span>Dashboard</span>\n' +
+    '        </a>\n' +
+    '      </li>\n' +
+    '      <li class="treeview" ng-show="vm.can(\'manage.users\')">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li ng-show="vm.can(\'manage.users\')" class="active"><a ui-sref=\'app.userlist\'><i class="fa fa-circle-o"></i> <span>User List</span></a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li class="treeview" ng-show="vm.can(\'manage.roles\') || vm.can(\'manage.permissions\')">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-cog"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li ng-show="vm.can(\'manage.roles\')"><a ui-sref=\'app.userroles\'><i class="fa fa-circle-o"></i> <span>User Roles</span></a></li>\n' +
+    '          <li ng-show="vm.can(\'manage.permissions\')"><a ui-sref=\'app.userpermissions\'><i class="fa fa-circle-o"></i> <span>User Permissions</span></a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li class="treeview">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-files-o"></i>\n' +
+    '          <span>Layout Options</span>\n' +
+    '          <span class="label label-primary pull-right">4</span>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Top Navigation</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Boxed</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Fixed</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        <a ui-sref="app.widgets">\n' +
+    '          <i class="fa fa-th"></i> <span>Widgets</span>\n' +
+    '          <small class="label pull-right bg-green">new</small>\n' +
+    '        </a>\n' +
+    '      </li>\n' +
+    '      <li class="treeview">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-pie-chart"></i>\n' +
+    '          <span>Charts</span>\n' +
+    '          <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li><a ui-sref="app.chartjs"><i class="fa fa-circle-o"></i> ChartJS</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Morris</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Flot</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Inline charts</a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li class="treeview">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-laptop"></i>\n' +
+    '          <span>UI Elements</span>\n' +
+    '          <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li><a ui-sref="app.uigeneral"><i class="fa fa-circle-o"></i> General</a></li>\n' +
+    '          <li><a ui-sref="app.uiicons"><i class="fa fa-circle-o"></i> Icons</a></li>\n' +
+    '          <li><a ui-sref="app.uibuttons"><i class="fa fa-circle-o"></i> Buttons</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Sliders</a></li>\n' +
+    '          <li><a ui-sref="app.uitimeline"><i class="fa fa-circle-o"></i> Timeline</a></li>\n' +
+    '          <li><a ui-sref="app.uimodal"><i class="fa fa-circle-o"></i> Modals</a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li class="treeview">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-edit"></i> <span>Forms</span>\n' +
+    '          <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li><a ui-sref="app.formsgeneral"><i class="fa fa-circle-o"></i> General Elements</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Editors</a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li class="treeview">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-table"></i> <span>Tables</span>\n' +
+    '          <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li><a ui-sref="app.tablessimple"><i class="fa fa-circle-o"></i> Simple tables</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Data tables</a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        <a ui-sref="app.comingsoon">\n' +
+    '          <i class="fa fa-calendar"></i> <span>Calendar</span>\n' +
+    '          <small class="label pull-right bg-red">3</small>\n' +
+    '        </a>\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        <a ui-sref="app.comingsoon">\n' +
+    '          <i class="fa fa-envelope"></i> <span>Mailbox</span>\n' +
+    '          <small class="label pull-right bg-yellow">12</small>\n' +
+    '        </a>\n' +
+    '      </li>\n' +
+    '      <li class="header">LABELS</li>\n' +
+    '      <li class="treeview">\n' +
+    '        <a href="javascript:void(0)">\n' +
+    '          <i class="fa fa-folder"></i> <span>Examples</span>\n' +
+    '          <i class="fa fa-angle-left pull-right"></i>\n' +
+    '        </a>\n' +
+    '        <ul class="treeview-menu">\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Invoice</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Profile</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Login</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Register</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Lockscreen</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> 404 Error</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> 500 Error</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Blank Page</a></li>\n' +
+    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Pace Page</a></li>\n' +
+    '        </ul>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '  </section>\n' +
+    '</aside>\n' +
+    '');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('app.partials');
+} catch (e) {
+  module = angular.module('app.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('./views/app/components/nav-header/nav-header.component.html',
     '<header class="main-header">\n' +
     '  <a href="/" class="logo">\n' +
@@ -1461,163 +1618,6 @@ module.run(['$templateCache', function($templateCache) {
     '    </div>\n' +
     '  </nav>\n' +
     '</header>\n' +
-    '');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('./views/app/components/nav-sidebar/nav-sidebar.component.html',
-    '<aside class="main-sidebar">\n' +
-    '  <section class="sidebar">\n' +
-    '    <div class="user-panel">\n' +
-    '      <div class="pull-left image">\n' +
-    '        <img src="{{vm.userData.avatar}}" class="img-circle" alt="User Image" onError="this.src=\'//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16\'">\n' +
-    '      </div>\n' +
-    '      <div class="pull-left info">\n' +
-    '        <p>{{vm.userData.name | capitalize}}</p>\n' +
-    '        <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <form action="#" method="get" class="sidebar-form">\n' +
-    '      <div class="input-group">\n' +
-    '        <input type="text" name="q" class="form-control" placeholder="Search...">\n' +
-    '        <span class="input-group-btn">\n' +
-    '          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>\n' +
-    '          </button>\n' +
-    '        </span>\n' +
-    '      </div>\n' +
-    '    </form>\n' +
-    '    <ul class="sidebar-menu">\n' +
-    '      <li class="header">MAIN NAVIGATION</li>\n' +
-    '      <li>\n' +
-    '        <a ui-sref=\'app.landing\'>\n' +
-    '          <i class="fa fa-dashboard"></i> <span>Dashboard</span>\n' +
-    '        </a>\n' +
-    '      </li>\n' +
-    '      <li class="treeview" ng-show="vm.can(\'manage.users\')">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li ng-show="vm.can(\'manage.users\')" class="active"><a ui-sref=\'app.userlist\'><i class="fa fa-circle-o"></i> <span>User List</span></a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li class="treeview" ng-show="vm.can(\'manage.roles\') || vm.can(\'manage.permissions\')">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-cog"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li ng-show="vm.can(\'manage.roles\')"><a ui-sref=\'app.userroles\'><i class="fa fa-circle-o"></i> <span>User Roles</span></a></li>\n' +
-    '          <li ng-show="vm.can(\'manage.permissions\')"><a ui-sref=\'app.userpermissions\'><i class="fa fa-circle-o"></i> <span>User Permissions</span></a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li class="treeview">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-files-o"></i>\n' +
-    '          <span>Layout Options</span>\n' +
-    '          <span class="label label-primary pull-right">4</span>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Top Navigation</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Boxed</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Fixed</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        <a ui-sref="app.widgets">\n' +
-    '          <i class="fa fa-th"></i> <span>Widgets</span>\n' +
-    '          <small class="label pull-right bg-green">new</small>\n' +
-    '        </a>\n' +
-    '      </li>\n' +
-    '      <li class="treeview">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-pie-chart"></i>\n' +
-    '          <span>Charts</span>\n' +
-    '          <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li><a ui-sref="app.chartjs"><i class="fa fa-circle-o"></i> ChartJS</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Morris</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Flot</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Inline charts</a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li class="treeview">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-laptop"></i>\n' +
-    '          <span>UI Elements</span>\n' +
-    '          <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li><a ui-sref="app.uigeneral"><i class="fa fa-circle-o"></i> General</a></li>\n' +
-    '          <li><a ui-sref="app.uiicons"><i class="fa fa-circle-o"></i> Icons</a></li>\n' +
-    '          <li><a ui-sref="app.uibuttons"><i class="fa fa-circle-o"></i> Buttons</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Sliders</a></li>\n' +
-    '          <li><a ui-sref="app.uitimeline"><i class="fa fa-circle-o"></i> Timeline</a></li>\n' +
-    '          <li><a ui-sref="app.uimodal"><i class="fa fa-circle-o"></i> Modals</a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li class="treeview">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-edit"></i> <span>Forms</span>\n' +
-    '          <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li><a ui-sref="app.formsgeneral"><i class="fa fa-circle-o"></i> General Elements</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Editors</a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li class="treeview">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-table"></i> <span>Tables</span>\n' +
-    '          <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li><a ui-sref="app.tablessimple"><i class="fa fa-circle-o"></i> Simple tables</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Data tables</a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        <a ui-sref="app.comingsoon">\n' +
-    '          <i class="fa fa-calendar"></i> <span>Calendar</span>\n' +
-    '          <small class="label pull-right bg-red">3</small>\n' +
-    '        </a>\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        <a ui-sref="app.comingsoon">\n' +
-    '          <i class="fa fa-envelope"></i> <span>Mailbox</span>\n' +
-    '          <small class="label pull-right bg-yellow">12</small>\n' +
-    '        </a>\n' +
-    '      </li>\n' +
-    '      <li class="header">LABELS</li>\n' +
-    '      <li class="treeview">\n' +
-    '        <a href="javascript:void(0)">\n' +
-    '          <i class="fa fa-folder"></i> <span>Examples</span>\n' +
-    '          <i class="fa fa-angle-left pull-right"></i>\n' +
-    '        </a>\n' +
-    '        <ul class="treeview-menu">\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Invoice</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Profile</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Login</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Register</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Lockscreen</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> 404 Error</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> 500 Error</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Blank Page</a></li>\n' +
-    '          <li><a ui-sref="app.comingsoon"><i class="fa fa-circle-o"></i> Pace Page</a></li>\n' +
-    '        </ul>\n' +
-    '      </li>\n' +
-    '    </ul>\n' +
-    '  </section>\n' +
-    '</aside>\n' +
     '');
 }]);
 })();
@@ -2050,6 +2050,675 @@ module.run(['$templateCache', function($templateCache) {
     '        <!-- /.box-body -->\n' +
     '      </div>\n' +
     '      <!-- /.box -->\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</section>\n' +
+    '');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('app.partials');
+} catch (e) {
+  module = angular.module('app.partials', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('./views/app/components/ui-general/ui-general.component.html',
+    '<section class="content-header">\n' +
+    '  <h1> General UI <small>Preview of UI elements</small></h1>\n' +
+    '  <ol class="breadcrumb">\n' +
+    '    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>\n' +
+    '    <li><a href="#">UI</a></li>\n' +
+    '    <li class="active">General</li>\n' +
+    '  </ol>\n' +
+    '</section>\n' +
+    '<section class="content">\n' +
+    '  <div class="box box-default color-palette-box">\n' +
+    '    <div class="box-header with-border">\n' +
+    '      <h3 class="box-title"><i class="fa fa-tag"></i> Color Palette</h3>\n' +
+    '    </div>\n' +
+    '    <div class="box-body">\n' +
+    '      <div class="row">\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Primary</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-light-blue disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-light-blue color-palette"><span>#3c8dbc</span></div>\n' +
+    '            <div class="bg-light-blue-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Info</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-aqua disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-aqua color-palette"><span>#00c0ef</span></div>\n' +
+    '            <div class="bg-aqua-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Success</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-green disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-green color-palette"><span>#00a65a</span></div>\n' +
+    '            <div class="bg-green-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Warning</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-yellow disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-yellow color-palette"><span>#f39c12</span></div>\n' +
+    '            <div class="bg-yellow-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Danger</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-red disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-red color-palette"><span>#f56954</span></div>\n' +
+    '            <div class="bg-red-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Gray</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-gray disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-gray color-palette"><span>#d2d6de</span></div>\n' +
+    '            <div class="bg-gray-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '      <div class="row">\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Navy</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-navy disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-navy color-palette"><span>#001F3F</span></div>\n' +
+    '            <div class="bg-navy-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Teal</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-teal disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-teal color-palette"><span>#39CCCC</span></div>\n' +
+    '            <div class="bg-teal-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Purple</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-purple disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-purple color-palette"><span>#605ca8</span></div>\n' +
+    '            <div class="bg-purple-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Orange</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-orange disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-orange color-palette"><span>#ff851b</span></div>\n' +
+    '            <div class="bg-orange-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Maroon</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-maroon disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-maroon color-palette"><span>#D81B60</span></div>\n' +
+    '            <div class="bg-maroon-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="col-sm-4 col-md-2">\n' +
+    '          <h4 class="text-center">Black</h4>\n' +
+    '          <div class="color-palette-set">\n' +
+    '            <div class="bg-black disabled color-palette"><span>Disabled</span></div>\n' +
+    '            <div class="bg-black color-palette"><span>#111111</span></div>\n' +
+    '            <div class="bg-black-active color-palette"><span>Active</span></div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <h2 class="page-header">Alerts and Callouts</h2>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-default">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-warning"></i>\n' +
+    '          <h3 class="box-title">Alerts</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <div class="alert alert-danger alert-dismissible">\n' +
+    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
+    '            <h4><i class="icon fa fa-ban"></i> Alert!</h4> Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.\n' +
+    '          </div>\n' +
+    '          <div class="alert alert-info alert-dismissible">\n' +
+    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
+    '            <h4><i class="icon fa fa-info"></i> Alert!</h4> Info alert preview. This alert is dismissable.\n' +
+    '          </div>\n' +
+    '          <div class="alert alert-warning alert-dismissible">\n' +
+    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
+    '            <h4><i class="icon fa fa-warning"></i> Alert!</h4> Warning alert preview. This alert is dismissable.\n' +
+    '          </div>\n' +
+    '          <div class="alert alert-success alert-dismissible">\n' +
+    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
+    '            <h4><i class="icon fa fa-check"></i> Alert!</h4> Success alert preview. This alert is dismissable.\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-default">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-bullhorn"></i>\n' +
+    '          <h3 class="box-title">Callouts</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <div class="callout callout-danger">\n' +
+    '            <h4>I am a danger callout!</h4>\n' +
+    '            <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>\n' +
+    '          </div>\n' +
+    '          <div class="callout callout-info">\n' +
+    '            <h4>I am an info callout!</h4>\n' +
+    '            <p>Follow the steps to continue to payment.</p>\n' +
+    '          </div>\n' +
+    '          <div class="callout callout-warning">\n' +
+    '            <h4>I am a warning callout!</h4>\n' +
+    '            <p>This is a yellow callout.</p>\n' +
+    '          </div>\n' +
+    '          <div class="callout callout-success">\n' +
+    '            <h4>I am a success callout!</h4>\n' +
+    '            <p>This is a green callout.</p>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <h2 class="page-header">AdminLTE Custom Tabs</h2>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="nav-tabs-custom">\n' +
+    '        <ul class="nav nav-tabs">\n' +
+    '          <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>\n' +
+    '          <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>\n' +
+    '          <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>\n' +
+    '          <li class="dropdown">\n' +
+    '            <a class="dropdown-toggle" data-toggle="dropdown" href="#">\n' +
+    '              Dropdown <span class="caret"></span>\n' +
+    '            </a>\n' +
+    '            <ul class="dropdown-menu">\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>\n' +
+    '              <li role="presentation" class="divider"></li>\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>\n' +
+    '            </ul>\n' +
+    '          </li>\n' +
+    '          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>\n' +
+    '        </ul>\n' +
+    '        <div class="tab-content">\n' +
+    '          <div class="tab-pane active" id="tab_1">\n' +
+    '            <b>How to use:</b>\n' +
+    '            <p>Exactly like the original bootstrap tabs except you should use the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>\n' +
+    '            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.\n' +
+    '          </div>\n' +
+    '          <div class="tab-pane" id="tab_2">\n' +
+    '            The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.\n' +
+    '          </div>\n' +
+    '          <div class="tab-pane" id="tab_3">\n' +
+    '            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="nav-tabs-custom">\n' +
+    '        <ul class="nav nav-tabs pull-right">\n' +
+    '          <li class="active"><a href="#tab_1-1" data-toggle="tab">Tab 1</a></li>\n' +
+    '          <li><a href="#tab_2-2" data-toggle="tab">Tab 2</a></li>\n' +
+    '          <li><a href="#tab_3-2" data-toggle="tab">Tab 3</a></li>\n' +
+    '          <li class="dropdown">\n' +
+    '            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>\n' +
+    '            <ul class="dropdown-menu">\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>\n' +
+    '              <li role="presentation" class="divider"></li>\n' +
+    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>\n' +
+    '            </ul>\n' +
+    '          </li>\n' +
+    '          <li class="pull-left header"><i class="fa fa-th"></i> Custom Tabs</li>\n' +
+    '        </ul>\n' +
+    '        <div class="tab-content">\n' +
+    '          <div class="tab-pane active" id="tab_1-1">\n' +
+    '            <b>How to use:</b>\n' +
+    '            <p>Exactly like the original bootstrap tabs except you should use the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>\n' +
+    '            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.\n' +
+    '          </div>\n' +
+    '          <div class="tab-pane" id="tab_2-2">\n' +
+    '            The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.\n' +
+    '          </div>\n' +
+    '          <div class="tab-pane" id="tab_3-2">\n' +
+    '            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <h2 class="page-header">Progress Bars</h2>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <h3 class="box-title">Progress Bars Different Sizes</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <p><code>.progress</code></p>\n' +
+    '          <div class="progress">\n' +
+    '            <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">\n' +
+    '              <span class="sr-only">40% Complete (success)</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <p>Class: <code>.sm</code></p>\n' +
+    '          <div class="progress progress-sm active">\n' +
+    '            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">\n' +
+    '              <span class="sr-only">20% Complete</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <p>Class: <code>.xs</code></p>\n' +
+    '          <div class="progress progress-xs">\n' +
+    '            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">\n' +
+    '              <span class="sr-only">60% Complete (warning)</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <p>Class: <code>.xxs</code></p>\n' +
+    '          <div class="progress progress-xxs">\n' +
+    '            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">\n' +
+    '              <span class="sr-only">60% Complete (warning)</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <h3 class="box-title">Progress bars</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <div class="progress">\n' +
+    '            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">\n' +
+    '              <span class="sr-only">40% Complete (success)</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress">\n' +
+    '            <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">\n' +
+    '              <span class="sr-only">20% Complete</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress">\n' +
+    '            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">\n' +
+    '              <span class="sr-only">60% Complete (warning)</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress">\n' +
+    '            <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">\n' +
+    '              <span class="sr-only">80% Complete</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <h3 class="box-title">Vertical Progress Bars Different Sizes</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body text-center">\n' +
+    '          <p>By adding the class <code>.vertical</code> and <code>.progress-sm</code>, <code>.progress-xs</code> or\n' +
+    '            <code>.progress-xxs</code> we achieve:</p>\n' +
+    '          <div class="progress vertical active">\n' +
+    '            <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 40%">\n' +
+    '              <span class="sr-only">40%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress vertical progress-sm">\n' +
+    '            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 100%">\n' +
+    '              <span class="sr-only">100%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress vertical progress-xs">\n' +
+    '            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">\n' +
+    '              <span class="sr-only">60%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress vertical progress-xxs">\n' +
+    '            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">\n' +
+    '              <span class="sr-only">60%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <h3 class="box-title">Vertical Progress bars</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body text-center">\n' +
+    '          <p>By adding the class <code>.vertical</code> we achieve:</p>\n' +
+    '          <div class="progress vertical">\n' +
+    '            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 40%">\n' +
+    '              <span class="sr-only">40%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress vertical">\n' +
+    '            <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 20%">\n' +
+    '              <span class="sr-only">20%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress vertical">\n' +
+    '            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">\n' +
+    '              <span class="sr-only">60%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '          <div class="progress vertical">\n' +
+    '            <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="height: 80%">\n' +
+    '              <span class="sr-only">80%</span>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <h2 class="page-header">Bootstrap Accordion & Carousel</h2>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <h3 class="box-title">Collapsible Accordion</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <div class="box-group" id="accordion">\n' +
+    '            <div class="panel box box-primary">\n' +
+    '              <div class="box-header with-border">\n' +
+    '                <h4 class="box-title">\n' +
+    '                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">\n' +
+    '                    Collapsible Group Item #1\n' +
+    '                  </a>\n' +
+    '                </h4>\n' +
+    '              </div>\n' +
+    '              <div id="collapseOne" class="panel-collapse collapse in">\n' +
+    '                <div class="box-body">\n' +
+    '                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '            </div>\n' +
+    '            <div class="panel box box-danger">\n' +
+    '              <div class="box-header with-border">\n' +
+    '                <h4 class="box-title">\n' +
+    '                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">\n' +
+    '                    Collapsible Group Danger\n' +
+    '                  </a>\n' +
+    '                </h4>\n' +
+    '              </div>\n' +
+    '              <div id="collapseTwo" class="panel-collapse collapse">\n' +
+    '                <div class="box-body">\n' +
+    '                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '            </div>\n' +
+    '            <div class="panel box box-success">\n' +
+    '              <div class="box-header with-border">\n' +
+    '                <h4 class="box-title">\n' +
+    '                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">\n' +
+    '                    Collapsible Group Success\n' +
+    '                  </a>\n' +
+    '                </h4>\n' +
+    '              </div>\n' +
+    '              <div id="collapseThree" class="panel-collapse collapse">\n' +
+    '                <div class="box-body">\n' +
+    '                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <h3 class="box-title">Carousel</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">\n' +
+    '            <ol class="carousel-indicators">\n' +
+    '              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>\n' +
+    '              <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>\n' +
+    '              <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>\n' +
+    '            </ol>\n' +
+    '            <div class="carousel-inner">\n' +
+    '              <div class="item active">\n' +
+    '                <img src="http://placehold.it/900x500/39CCCC/ffffff&text=I+Love+Bootstrap" alt="First slide">\n' +
+    '                <div class="carousel-caption">\n' +
+    '                  First Slide\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '              <div class="item">\n' +
+    '                <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide">\n' +
+    '                <div class="carousel-caption">\n' +
+    '                  Second Slide\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '              <div class="item">\n' +
+    '                <img src="http://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap" alt="Third slide">\n' +
+    '                <div class="carousel-caption">\n' +
+    '                  Third Slide\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '            </div>\n' +
+    '            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="fa fa-angle-left"></span></a>\n' +
+    '            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="fa fa-angle-right"></span></a>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <h2 class="page-header">Typography</h2>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Headlines</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <h1>h1. Bootstrap heading</h1>\n' +
+    '          <h2>h2. Bootstrap heading</h2>\n' +
+    '          <h3>h3. Bootstrap heading</h3>\n' +
+    '          <h4>h4. Bootstrap heading</h4>\n' +
+    '          <h5>h5. Bootstrap heading</h5>\n' +
+    '          <h6>h6. Bootstrap heading</h6>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Text Emphasis</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <p class="lead">Lead to emphasize importance</p>\n' +
+    '          <p class="text-green">Text green to emphasize success</p>\n' +
+    '          <p class="text-aqua">Text aqua to emphasize info</p>\n' +
+    '          <p class="text-light-blue">Text light blue to emphasize info (2)</p>\n' +
+    '          <p class="text-red">Text red to emphasize danger</p>\n' +
+    '          <p class="text-yellow">Text yellow to emphasize warning</p>\n' +
+    '          <p class="text-muted">Text muted to emphasize general</p>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Block Quotes</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <blockquote>\n' +
+    '            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>\n' +
+    '            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>\n' +
+    '          </blockquote>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Block Quotes Pulled Right</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body clearfix">\n' +
+    '          <blockquote class="pull-right">\n' +
+    '            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>\n' +
+    '            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>\n' +
+    '          </blockquote>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-4">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Unordered List</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <ul>\n' +
+    '            <li>Lorem ipsum dolor sit amet</li>\n' +
+    '            <li>Consectetur adipiscing elit</li>\n' +
+    '            <li>Integer molestie lorem at massa</li>\n' +
+    '            <li>Facilisis in pretium nisl aliquet</li>\n' +
+    '            <li>Nulla volutpat aliquam velit\n' +
+    '              <ul>\n' +
+    '                <li>Phasellus iaculis neque</li>\n' +
+    '                <li>Purus sodales ultricies</li>\n' +
+    '                <li>Vestibulum laoreet porttitor sem</li>\n' +
+    '                <li>Ac tristique libero volutpat at</li>\n' +
+    '              </ul>\n' +
+    '            </li>\n' +
+    '            <li>Faucibus porta lacus fringilla vel</li>\n' +
+    '            <li>Aenean sit amet erat nunc</li>\n' +
+    '            <li>Eget porttitor lorem</li>\n' +
+    '          </ul>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-4">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Ordered Lists</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <ol>\n' +
+    '            <li>Lorem ipsum dolor sit amet</li>\n' +
+    '            <li>Consectetur adipiscing elit</li>\n' +
+    '            <li>Integer molestie lorem at massa</li>\n' +
+    '            <li>Facilisis in pretium nisl aliquet</li>\n' +
+    '            <li>Nulla volutpat aliquam velit\n' +
+    '              <ol>\n' +
+    '                <li>Phasellus iaculis neque</li>\n' +
+    '                <li>Purus sodales ultricies</li>\n' +
+    '                <li>Vestibulum laoreet porttitor sem</li>\n' +
+    '                <li>Ac tristique libero volutpat at</li>\n' +
+    '              </ol>\n' +
+    '            </li>\n' +
+    '            <li>Faucibus porta lacus fringilla vel</li>\n' +
+    '            <li>Aenean sit amet erat nunc</li>\n' +
+    '            <li>Eget porttitor lorem</li>\n' +
+    '          </ol>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-4">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Unstyled List</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <ul class="list-unstyled">\n' +
+    '            <li>Lorem ipsum dolor sit amet</li>\n' +
+    '            <li>Consectetur adipiscing elit</li>\n' +
+    '            <li>Integer molestie lorem at massa</li>\n' +
+    '            <li>Facilisis in pretium nisl aliquet</li>\n' +
+    '            <li>Nulla volutpat aliquam velit\n' +
+    '              <ul>\n' +
+    '                <li>Phasellus iaculis neque</li>\n' +
+    '                <li>Purus sodales ultricies</li>\n' +
+    '                <li>Vestibulum laoreet porttitor sem</li>\n' +
+    '                <li>Ac tristique libero volutpat at</li>\n' +
+    '              </ul>\n' +
+    '            </li>\n' +
+    '            <li>Faucibus porta lacus fringilla vel</li>\n' +
+    '            <li>Aenean sit amet erat nunc</li>\n' +
+    '            <li>Eget porttitor lorem</li>\n' +
+    '          </ul>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="row">\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Description</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <dl>\n' +
+    '            <dt>Description lists</dt>\n' +
+    '            <dd>A description list is perfect for defining terms.</dd>\n' +
+    '            <dt>Euismod</dt>\n' +
+    '            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>\n' +
+    '            <dd>Donec id elit non mi porta gravida at eget metus.</dd>\n' +
+    '            <dt>Malesuada porta</dt>\n' +
+    '            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>\n' +
+    '          </dl>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </div>\n' +
+    '    <div class="col-md-6">\n' +
+    '      <div class="box box-solid">\n' +
+    '        <div class="box-header with-border">\n' +
+    '          <i class="fa fa-text-width"></i>\n' +
+    '          <h3 class="box-title">Description Horizontal</h3>\n' +
+    '        </div>\n' +
+    '        <div class="box-body">\n' +
+    '          <dl class="dl-horizontal">\n' +
+    '            <dt>Description lists</dt>\n' +
+    '            <dd>A description list is perfect for defining terms.</dd>\n' +
+    '            <dt>Euismod</dt>\n' +
+    '            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>\n' +
+    '            <dd>Donec id elit non mi porta gravida at eget metus.</dd>\n' +
+    '            <dt>Malesuada porta</dt>\n' +
+    '            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>\n' +
+    '            <dt>Felis euismod semper eget lacinia</dt>\n' +
+    '            <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.\n' +
+    '            </dd>\n' +
+    '          </dl>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
     '    </div>\n' +
     '  </div>\n' +
     '</section>\n' +
@@ -2862,675 +3531,6 @@ module.run(['$templateCache', function($templateCache) {
     '              </td>\n' +
     '            </tr>\n' +
     '          </table>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '</section>\n' +
-    '');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('app.partials');
-} catch (e) {
-  module = angular.module('app.partials', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('./views/app/components/ui-general/ui-general.component.html',
-    '<section class="content-header">\n' +
-    '  <h1> General UI <small>Preview of UI elements</small></h1>\n' +
-    '  <ol class="breadcrumb">\n' +
-    '    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>\n' +
-    '    <li><a href="#">UI</a></li>\n' +
-    '    <li class="active">General</li>\n' +
-    '  </ol>\n' +
-    '</section>\n' +
-    '<section class="content">\n' +
-    '  <div class="box box-default color-palette-box">\n' +
-    '    <div class="box-header with-border">\n' +
-    '      <h3 class="box-title"><i class="fa fa-tag"></i> Color Palette</h3>\n' +
-    '    </div>\n' +
-    '    <div class="box-body">\n' +
-    '      <div class="row">\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Primary</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-light-blue disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-light-blue color-palette"><span>#3c8dbc</span></div>\n' +
-    '            <div class="bg-light-blue-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Info</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-aqua disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-aqua color-palette"><span>#00c0ef</span></div>\n' +
-    '            <div class="bg-aqua-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Success</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-green disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-green color-palette"><span>#00a65a</span></div>\n' +
-    '            <div class="bg-green-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Warning</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-yellow disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-yellow color-palette"><span>#f39c12</span></div>\n' +
-    '            <div class="bg-yellow-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Danger</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-red disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-red color-palette"><span>#f56954</span></div>\n' +
-    '            <div class="bg-red-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Gray</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-gray disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-gray color-palette"><span>#d2d6de</span></div>\n' +
-    '            <div class="bg-gray-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '      <div class="row">\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Navy</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-navy disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-navy color-palette"><span>#001F3F</span></div>\n' +
-    '            <div class="bg-navy-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Teal</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-teal disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-teal color-palette"><span>#39CCCC</span></div>\n' +
-    '            <div class="bg-teal-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Purple</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-purple disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-purple color-palette"><span>#605ca8</span></div>\n' +
-    '            <div class="bg-purple-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Orange</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-orange disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-orange color-palette"><span>#ff851b</span></div>\n' +
-    '            <div class="bg-orange-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Maroon</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-maroon disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-maroon color-palette"><span>#D81B60</span></div>\n' +
-    '            <div class="bg-maroon-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '        <div class="col-sm-4 col-md-2">\n' +
-    '          <h4 class="text-center">Black</h4>\n' +
-    '          <div class="color-palette-set">\n' +
-    '            <div class="bg-black disabled color-palette"><span>Disabled</span></div>\n' +
-    '            <div class="bg-black color-palette"><span>#111111</span></div>\n' +
-    '            <div class="bg-black-active color-palette"><span>Active</span></div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <h2 class="page-header">Alerts and Callouts</h2>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-default">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-warning"></i>\n' +
-    '          <h3 class="box-title">Alerts</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <div class="alert alert-danger alert-dismissible">\n' +
-    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
-    '            <h4><i class="icon fa fa-ban"></i> Alert!</h4> Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.\n' +
-    '          </div>\n' +
-    '          <div class="alert alert-info alert-dismissible">\n' +
-    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
-    '            <h4><i class="icon fa fa-info"></i> Alert!</h4> Info alert preview. This alert is dismissable.\n' +
-    '          </div>\n' +
-    '          <div class="alert alert-warning alert-dismissible">\n' +
-    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
-    '            <h4><i class="icon fa fa-warning"></i> Alert!</h4> Warning alert preview. This alert is dismissable.\n' +
-    '          </div>\n' +
-    '          <div class="alert alert-success alert-dismissible">\n' +
-    '            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\n' +
-    '            <h4><i class="icon fa fa-check"></i> Alert!</h4> Success alert preview. This alert is dismissable.\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-default">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-bullhorn"></i>\n' +
-    '          <h3 class="box-title">Callouts</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <div class="callout callout-danger">\n' +
-    '            <h4>I am a danger callout!</h4>\n' +
-    '            <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>\n' +
-    '          </div>\n' +
-    '          <div class="callout callout-info">\n' +
-    '            <h4>I am an info callout!</h4>\n' +
-    '            <p>Follow the steps to continue to payment.</p>\n' +
-    '          </div>\n' +
-    '          <div class="callout callout-warning">\n' +
-    '            <h4>I am a warning callout!</h4>\n' +
-    '            <p>This is a yellow callout.</p>\n' +
-    '          </div>\n' +
-    '          <div class="callout callout-success">\n' +
-    '            <h4>I am a success callout!</h4>\n' +
-    '            <p>This is a green callout.</p>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <h2 class="page-header">AdminLTE Custom Tabs</h2>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="nav-tabs-custom">\n' +
-    '        <ul class="nav nav-tabs">\n' +
-    '          <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>\n' +
-    '          <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>\n' +
-    '          <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>\n' +
-    '          <li class="dropdown">\n' +
-    '            <a class="dropdown-toggle" data-toggle="dropdown" href="#">\n' +
-    '              Dropdown <span class="caret"></span>\n' +
-    '            </a>\n' +
-    '            <ul class="dropdown-menu">\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>\n' +
-    '              <li role="presentation" class="divider"></li>\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>\n' +
-    '            </ul>\n' +
-    '          </li>\n' +
-    '          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>\n' +
-    '        </ul>\n' +
-    '        <div class="tab-content">\n' +
-    '          <div class="tab-pane active" id="tab_1">\n' +
-    '            <b>How to use:</b>\n' +
-    '            <p>Exactly like the original bootstrap tabs except you should use the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>\n' +
-    '            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.\n' +
-    '          </div>\n' +
-    '          <div class="tab-pane" id="tab_2">\n' +
-    '            The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.\n' +
-    '          </div>\n' +
-    '          <div class="tab-pane" id="tab_3">\n' +
-    '            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="nav-tabs-custom">\n' +
-    '        <ul class="nav nav-tabs pull-right">\n' +
-    '          <li class="active"><a href="#tab_1-1" data-toggle="tab">Tab 1</a></li>\n' +
-    '          <li><a href="#tab_2-2" data-toggle="tab">Tab 2</a></li>\n' +
-    '          <li><a href="#tab_3-2" data-toggle="tab">Tab 3</a></li>\n' +
-    '          <li class="dropdown">\n' +
-    '            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>\n' +
-    '            <ul class="dropdown-menu">\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>\n' +
-    '              <li role="presentation" class="divider"></li>\n' +
-    '              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>\n' +
-    '            </ul>\n' +
-    '          </li>\n' +
-    '          <li class="pull-left header"><i class="fa fa-th"></i> Custom Tabs</li>\n' +
-    '        </ul>\n' +
-    '        <div class="tab-content">\n' +
-    '          <div class="tab-pane active" id="tab_1-1">\n' +
-    '            <b>How to use:</b>\n' +
-    '            <p>Exactly like the original bootstrap tabs except you should use the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>\n' +
-    '            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.\n' +
-    '          </div>\n' +
-    '          <div class="tab-pane" id="tab_2-2">\n' +
-    '            The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.\n' +
-    '          </div>\n' +
-    '          <div class="tab-pane" id="tab_3-2">\n' +
-    '            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <h2 class="page-header">Progress Bars</h2>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <h3 class="box-title">Progress Bars Different Sizes</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <p><code>.progress</code></p>\n' +
-    '          <div class="progress">\n' +
-    '            <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">\n' +
-    '              <span class="sr-only">40% Complete (success)</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <p>Class: <code>.sm</code></p>\n' +
-    '          <div class="progress progress-sm active">\n' +
-    '            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">\n' +
-    '              <span class="sr-only">20% Complete</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <p>Class: <code>.xs</code></p>\n' +
-    '          <div class="progress progress-xs">\n' +
-    '            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">\n' +
-    '              <span class="sr-only">60% Complete (warning)</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <p>Class: <code>.xxs</code></p>\n' +
-    '          <div class="progress progress-xxs">\n' +
-    '            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">\n' +
-    '              <span class="sr-only">60% Complete (warning)</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <h3 class="box-title">Progress bars</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <div class="progress">\n' +
-    '            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">\n' +
-    '              <span class="sr-only">40% Complete (success)</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress">\n' +
-    '            <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">\n' +
-    '              <span class="sr-only">20% Complete</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress">\n' +
-    '            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">\n' +
-    '              <span class="sr-only">60% Complete (warning)</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress">\n' +
-    '            <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">\n' +
-    '              <span class="sr-only">80% Complete</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <h3 class="box-title">Vertical Progress Bars Different Sizes</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body text-center">\n' +
-    '          <p>By adding the class <code>.vertical</code> and <code>.progress-sm</code>, <code>.progress-xs</code> or\n' +
-    '            <code>.progress-xxs</code> we achieve:</p>\n' +
-    '          <div class="progress vertical active">\n' +
-    '            <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 40%">\n' +
-    '              <span class="sr-only">40%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress vertical progress-sm">\n' +
-    '            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 100%">\n' +
-    '              <span class="sr-only">100%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress vertical progress-xs">\n' +
-    '            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">\n' +
-    '              <span class="sr-only">60%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress vertical progress-xxs">\n' +
-    '            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">\n' +
-    '              <span class="sr-only">60%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <h3 class="box-title">Vertical Progress bars</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body text-center">\n' +
-    '          <p>By adding the class <code>.vertical</code> we achieve:</p>\n' +
-    '          <div class="progress vertical">\n' +
-    '            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="height: 40%">\n' +
-    '              <span class="sr-only">40%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress vertical">\n' +
-    '            <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="height: 20%">\n' +
-    '              <span class="sr-only">20%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress vertical">\n' +
-    '            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%">\n' +
-    '              <span class="sr-only">60%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '          <div class="progress vertical">\n' +
-    '            <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="height: 80%">\n' +
-    '              <span class="sr-only">80%</span>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <h2 class="page-header">Bootstrap Accordion & Carousel</h2>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <h3 class="box-title">Collapsible Accordion</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <div class="box-group" id="accordion">\n' +
-    '            <div class="panel box box-primary">\n' +
-    '              <div class="box-header with-border">\n' +
-    '                <h4 class="box-title">\n' +
-    '                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">\n' +
-    '                    Collapsible Group Item #1\n' +
-    '                  </a>\n' +
-    '                </h4>\n' +
-    '              </div>\n' +
-    '              <div id="collapseOne" class="panel-collapse collapse in">\n' +
-    '                <div class="box-body">\n' +
-    '                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
-    '                </div>\n' +
-    '              </div>\n' +
-    '            </div>\n' +
-    '            <div class="panel box box-danger">\n' +
-    '              <div class="box-header with-border">\n' +
-    '                <h4 class="box-title">\n' +
-    '                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">\n' +
-    '                    Collapsible Group Danger\n' +
-    '                  </a>\n' +
-    '                </h4>\n' +
-    '              </div>\n' +
-    '              <div id="collapseTwo" class="panel-collapse collapse">\n' +
-    '                <div class="box-body">\n' +
-    '                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
-    '                </div>\n' +
-    '              </div>\n' +
-    '            </div>\n' +
-    '            <div class="panel box box-success">\n' +
-    '              <div class="box-header with-border">\n' +
-    '                <h4 class="box-title">\n' +
-    '                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">\n' +
-    '                    Collapsible Group Success\n' +
-    '                  </a>\n' +
-    '                </h4>\n' +
-    '              </div>\n' +
-    '              <div id="collapseThree" class="panel-collapse collapse">\n' +
-    '                <div class="box-body">\n' +
-    '                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
-    '                </div>\n' +
-    '              </div>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <h3 class="box-title">Carousel</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">\n' +
-    '            <ol class="carousel-indicators">\n' +
-    '              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>\n' +
-    '              <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>\n' +
-    '              <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>\n' +
-    '            </ol>\n' +
-    '            <div class="carousel-inner">\n' +
-    '              <div class="item active">\n' +
-    '                <img src="http://placehold.it/900x500/39CCCC/ffffff&text=I+Love+Bootstrap" alt="First slide">\n' +
-    '                <div class="carousel-caption">\n' +
-    '                  First Slide\n' +
-    '                </div>\n' +
-    '              </div>\n' +
-    '              <div class="item">\n' +
-    '                <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide">\n' +
-    '                <div class="carousel-caption">\n' +
-    '                  Second Slide\n' +
-    '                </div>\n' +
-    '              </div>\n' +
-    '              <div class="item">\n' +
-    '                <img src="http://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap" alt="Third slide">\n' +
-    '                <div class="carousel-caption">\n' +
-    '                  Third Slide\n' +
-    '                </div>\n' +
-    '              </div>\n' +
-    '            </div>\n' +
-    '            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="fa fa-angle-left"></span></a>\n' +
-    '            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="fa fa-angle-right"></span></a>\n' +
-    '          </div>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <h2 class="page-header">Typography</h2>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Headlines</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <h1>h1. Bootstrap heading</h1>\n' +
-    '          <h2>h2. Bootstrap heading</h2>\n' +
-    '          <h3>h3. Bootstrap heading</h3>\n' +
-    '          <h4>h4. Bootstrap heading</h4>\n' +
-    '          <h5>h5. Bootstrap heading</h5>\n' +
-    '          <h6>h6. Bootstrap heading</h6>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Text Emphasis</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <p class="lead">Lead to emphasize importance</p>\n' +
-    '          <p class="text-green">Text green to emphasize success</p>\n' +
-    '          <p class="text-aqua">Text aqua to emphasize info</p>\n' +
-    '          <p class="text-light-blue">Text light blue to emphasize info (2)</p>\n' +
-    '          <p class="text-red">Text red to emphasize danger</p>\n' +
-    '          <p class="text-yellow">Text yellow to emphasize warning</p>\n' +
-    '          <p class="text-muted">Text muted to emphasize general</p>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Block Quotes</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <blockquote>\n' +
-    '            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>\n' +
-    '            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>\n' +
-    '          </blockquote>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Block Quotes Pulled Right</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body clearfix">\n' +
-    '          <blockquote class="pull-right">\n' +
-    '            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>\n' +
-    '            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>\n' +
-    '          </blockquote>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-4">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Unordered List</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <ul>\n' +
-    '            <li>Lorem ipsum dolor sit amet</li>\n' +
-    '            <li>Consectetur adipiscing elit</li>\n' +
-    '            <li>Integer molestie lorem at massa</li>\n' +
-    '            <li>Facilisis in pretium nisl aliquet</li>\n' +
-    '            <li>Nulla volutpat aliquam velit\n' +
-    '              <ul>\n' +
-    '                <li>Phasellus iaculis neque</li>\n' +
-    '                <li>Purus sodales ultricies</li>\n' +
-    '                <li>Vestibulum laoreet porttitor sem</li>\n' +
-    '                <li>Ac tristique libero volutpat at</li>\n' +
-    '              </ul>\n' +
-    '            </li>\n' +
-    '            <li>Faucibus porta lacus fringilla vel</li>\n' +
-    '            <li>Aenean sit amet erat nunc</li>\n' +
-    '            <li>Eget porttitor lorem</li>\n' +
-    '          </ul>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-4">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Ordered Lists</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <ol>\n' +
-    '            <li>Lorem ipsum dolor sit amet</li>\n' +
-    '            <li>Consectetur adipiscing elit</li>\n' +
-    '            <li>Integer molestie lorem at massa</li>\n' +
-    '            <li>Facilisis in pretium nisl aliquet</li>\n' +
-    '            <li>Nulla volutpat aliquam velit\n' +
-    '              <ol>\n' +
-    '                <li>Phasellus iaculis neque</li>\n' +
-    '                <li>Purus sodales ultricies</li>\n' +
-    '                <li>Vestibulum laoreet porttitor sem</li>\n' +
-    '                <li>Ac tristique libero volutpat at</li>\n' +
-    '              </ol>\n' +
-    '            </li>\n' +
-    '            <li>Faucibus porta lacus fringilla vel</li>\n' +
-    '            <li>Aenean sit amet erat nunc</li>\n' +
-    '            <li>Eget porttitor lorem</li>\n' +
-    '          </ol>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-4">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Unstyled List</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <ul class="list-unstyled">\n' +
-    '            <li>Lorem ipsum dolor sit amet</li>\n' +
-    '            <li>Consectetur adipiscing elit</li>\n' +
-    '            <li>Integer molestie lorem at massa</li>\n' +
-    '            <li>Facilisis in pretium nisl aliquet</li>\n' +
-    '            <li>Nulla volutpat aliquam velit\n' +
-    '              <ul>\n' +
-    '                <li>Phasellus iaculis neque</li>\n' +
-    '                <li>Purus sodales ultricies</li>\n' +
-    '                <li>Vestibulum laoreet porttitor sem</li>\n' +
-    '                <li>Ac tristique libero volutpat at</li>\n' +
-    '              </ul>\n' +
-    '            </li>\n' +
-    '            <li>Faucibus porta lacus fringilla vel</li>\n' +
-    '            <li>Aenean sit amet erat nunc</li>\n' +
-    '            <li>Eget porttitor lorem</li>\n' +
-    '          </ul>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <div class="row">\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Description</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <dl>\n' +
-    '            <dt>Description lists</dt>\n' +
-    '            <dd>A description list is perfect for defining terms.</dd>\n' +
-    '            <dt>Euismod</dt>\n' +
-    '            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>\n' +
-    '            <dd>Donec id elit non mi porta gravida at eget metus.</dd>\n' +
-    '            <dt>Malesuada porta</dt>\n' +
-    '            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>\n' +
-    '          </dl>\n' +
-    '        </div>\n' +
-    '      </div>\n' +
-    '    </div>\n' +
-    '    <div class="col-md-6">\n' +
-    '      <div class="box box-solid">\n' +
-    '        <div class="box-header with-border">\n' +
-    '          <i class="fa fa-text-width"></i>\n' +
-    '          <h3 class="box-title">Description Horizontal</h3>\n' +
-    '        </div>\n' +
-    '        <div class="box-body">\n' +
-    '          <dl class="dl-horizontal">\n' +
-    '            <dt>Description lists</dt>\n' +
-    '            <dd>A description list is perfect for defining terms.</dd>\n' +
-    '            <dt>Euismod</dt>\n' +
-    '            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>\n' +
-    '            <dd>Donec id elit non mi porta gravida at eget metus.</dd>\n' +
-    '            <dt>Malesuada porta</dt>\n' +
-    '            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>\n' +
-    '            <dt>Felis euismod semper eget lacinia</dt>\n' +
-    '            <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.\n' +
-    '            </dd>\n' +
-    '          </dl>\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </div>\n' +

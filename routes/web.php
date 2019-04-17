@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function() {
-  //  return View::make('index'); // will return app/views/index.php
-    return view('unsupported_browser');
-});
+/*Route::get('/', function() {
+    return View::make('index'); // will return app/views/index.php
+    //return view('unsupported_browser');
+});*/
 
 //Auth::routes();
 // API ROUTES ==================================
@@ -38,14 +38,14 @@ Route::post('register','RegisterController@register')->name('register');
 //Route::post('oauth/token','Auth\LoginController@login')->name('oauth/token');
 
 
-Route::any('{catchall}', function() {
+/*Route::any('{catchall}', function() {
   //some code
 })->where('catchall', '.*');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+*/
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

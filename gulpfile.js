@@ -7,7 +7,7 @@ require('./tasks/bower.task.js')
 require('./tasks/ngHtml2Js.task.js')
 
 if (!elixir.config.production) {
-  require('./tasks/phpcs.task.js')
+//  require('./tasks/phpcs.task.js')
 }
 
 /*
@@ -59,7 +59,8 @@ elixir(function (mix) {
     .styles(styles, './public/css/final.css')
     .version(assets)
     .browserSync({
-      proxy: 'localhost:8000'
+      proxy: 'localhost:8000',
+      port: 5000
     })
     .karma({
       jsDir: karmaJsDir
