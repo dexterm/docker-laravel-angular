@@ -1,0 +1,16 @@
+//this for postman only
+{"username":"djcm95@gmail.com","password":"12345678","client_id":1,"client_secret":"Eg7cchbJJnSHK7ic0ukbWOCD7uqAgaSJxf56FPkk","grant_type":"password"}
+The data must be sent using "Body" -> Raw
+Also set Content-type: application/json
+
+
+
+This is for curl
+//sign up using curl
+curl -d "name=dexter&email=djcm95@gmail.com&password=12345678&c_password=12345678&mobile=12344444422" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost/register
+
+
+This is for curl
+get oauth token usign curl
+curl -d '{"username":"djcm95@gmail.com","password":"12345678","client_id":"1","client_secret":"Eg7cchbJJnSHK7ic0ukbWOCD7uqAgaSJxf56FPkk","grant_type":"password"}' -H "Content-Type: application/json" -X POST http://localhost/oauth/token
+
