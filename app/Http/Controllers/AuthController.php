@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use App\User;
+
 class AuthController extends Controller {
     /**
      * Generate JSON Web Token.
@@ -145,7 +146,7 @@ class AuthController extends Controller {
         $params = [
             'code' => $request->input('code'),
             'client_id' => $request->input('clientId'),
-            'client_secret' => Config::get('app.google_secret'),
+            'client_secret' => Config::get('satellizer.google_secret'),
             'redirect_uri' => $request->input('redirectUri'),
             'grant_type' => 'authorization_code',
         ];
@@ -162,7 +163,7 @@ class AuthController extends Controller {
         // Step 3a. If user is already signed in then link accounts.
         if ($request->header('Authorization'))
         {
-            $user = User::where('google', '=', $profile['sub']);
+            $user = User::where('social', '=', $profile['sub']);
             if ($user->first())
             {
                 return response()->json(['message' => 'There is already a Google account that belongs to you'], 409);
@@ -170,23 +171,25 @@ class AuthController extends Controller {
             $token = explode(' ', $request->header('Authorization'))[1];
             $payload = (array) JWT::decode($token, Config::get('app.token_secret'), array('HS256'));
             $user = User::find($payload['sub']);
-            $user->google = $profile['sub'];
-            $user->displayName = $user->displayName ?: $profile['name'];
+            $user->social = $profile['sub'];
+            $user->name = $user->name ?: $profile['name'];
             $user->save();
             return response()->json(['token' => $this->createToken($user)]);
         }
         // Step 3b. Create a new user account or return an existing one.
         else
         {
-            $user = User::where('google', '=', $profile['sub']);
+            $user = User::where('social', '=', $profile['sub']);
             if ($user->first())
             {
                 return response()->json(['token' => $this->createToken($user->first())]);
             }
             $user = new User;
-            $user->google = $profile['sub'];
-            $user->displayName = $profile['name'];
-            $user->picture = $profile['picture'];
+            $user->social = $profile['sub'];
+            $user->password = Hash::make('guest');
+            $user->social_type = 'google';
+            $user->name = $profile['name'];
+            $user->avatar = $profile['picture'];
             $user->email = $profile['email'];
             $user->save();
             return response()->json(['token' => $this->createToken($user)]);
@@ -489,7 +492,7 @@ class AuthController extends Controller {
             $user = User::find($payload['sub']);
             $user->github = $profile['id'];
             $user->displayName = $user->displayName ?: $profile['name'];
-            $user->save(); //composer require laravel/socialite --save
+            $user->save(); 
             return response()->json(['token' => $this->createToken($user)]);
         }
         // Step 3b. Create a new user account or return an existing one.

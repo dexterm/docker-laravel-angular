@@ -95,12 +95,14 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'social' => "Via Website {$data['email']}",
+            'socia_type' => 'Via website'
         ]);
 
         // And created user until here.
     
         //$client = Client::where('password_client', 1)->first();
-        $client = Client::where('oauth_clients', 3)->first();
+        $client = Client::where('oauth_clients', 1)->first();
 
     
         // Is this $request the same request? I mean Request $request? Then wouldn't it mess the other $request stuff? Also how did you pass it on the $request in $proxy? Wouldn't Request::create() just create a new thing?

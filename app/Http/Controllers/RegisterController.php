@@ -97,16 +97,20 @@ class RegisterController extends Controller
             'mobile' => $data['mobile']
         ]);*/
     
+        Log::info('EEEEEEEEEEEEEEEE user into db.....: ');
+        
         $data = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'social' => "Via Web {$request['email']}",
+            'social_type' => 'Non Social Media'
         ]);
 
         // And created user until here.
     
         //$client = Client::where('password_client', 1)->first();
-        $client = DB::table('oauth_clients', 3)->first();
+        $client = DB::table('oauth_clients', 1)->first();
 
         //$client = db::where('oauth_clients', 3)->first();
 

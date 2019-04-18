@@ -36,12 +36,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/verify', 'VerifyOAuthController@store')->name('verify');
 Route::post('register','RegisterController@register')->name('register');
 //Route::post('oauth/token','Auth\LoginController@login')->name('oauth/token');
+Route::post('oauth/token', 'AccessTokenController@issueToken'); //customised route this override defauls laravel access token controller
 
 /*Route::any('{catchall}', function() {
   //some code
 })->where('catchall', '.*');
 */
 //Auth::routes();
+Route::post('auth/google', 'AuthController@google');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
