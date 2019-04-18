@@ -37,7 +37,6 @@ Route::get('/verify', 'VerifyOAuthController@store')->name('verify');
 Route::post('register','RegisterController@register')->name('register');
 //Route::post('oauth/token','Auth\LoginController@login')->name('oauth/token');
 
-
 /*Route::any('{catchall}', function() {
   //some code
 })->where('catchall', '.*');

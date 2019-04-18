@@ -24,7 +24,7 @@ services:
       - "internal_host:172.27.0.1" 
       #- "dockerhost:${DOCKER_HOST_IP}"
     ports:
-      - 9000:9000
+      - 6000:6000
       - 5000:5000
     volumes:
       - ./:/var/www
