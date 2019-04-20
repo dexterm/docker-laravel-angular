@@ -73,32 +73,26 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
 
-        Log::info('Registering user into db.....: ');
-       
+        Log::info('Registering user into db...!!!!..: ');
+        //$error = array('code' => 400, 'message' => array(), 'data' => array() );
+        $json_response = array('code' => 200, 'message' => array(), 'data' => array() );
         $valid = validator($request->only('email', 'name', 'password','mobile', 'c_password'), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8',
             'c_password' => 'required|same:password', 
             'mobile' => 'required|min:10'
         ]);
     
         if ($valid->fails()) {
-            $jsonError=response()->json($valid->errors()->all(), 400);
-            return \Response::json($jsonError);
+            $json_response['code'] = 400;
+            $json_response['message'] = $valid->errors()->all();
+            $json_response['data'] = $valid->errors()->all();
+            return \Response::json($json_response, 400);
         }
     
         $data = request()->only('email','name','password','mobile');
     
-        /*$user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'mobile' => $data['mobile']
-        ]);*/
-    
-        Log::info('EEEEEEEEEEEEEEEE user into db.....: ');
-        
         $data = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -133,7 +127,9 @@ class RegisterController extends Controller
             'oauth/token',
             'POST'
         );
-        return response()->json(['success' => $token], 200); 
+        $json_response['message'] = array("USER_REGISTER_SUCCESS");
+        $json_response['data'] = array("USER_REGISTER_SUCCESS");
+        return response()->json($json_response, 200); 
         //return \Route::dispatch($token);
         
     }

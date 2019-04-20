@@ -1,5 +1,5 @@
 //this for postman only
-{"username":"djcm95@gmail.com","password":"12345678","client_id":1,"client_secret":"Eg7cchbJJnSHK7ic0ukbWOCD7uqAgaSJxf56FPkk","grant_type":"password"}
+{"username":"djcm95@gmail.com","password":"12345678","client_id":1,"client_secret":"wPUP0t0lo0E7IRi5YbwXZyVZM5EcMwd8PCf6njlh","grant_type":"password"}
 The data must be sent using "Body" -> Raw
 Also set Content-type: application/json
 
@@ -12,5 +12,10 @@ curl -d "name=dexter&email=djcm95@gmail.com&password=12345678&c_password=1234567
 
 This is for curl
 get oauth token usign curl
-curl -d '{"username":"djcm95@gmail.com","password":"12345678","client_id":"1","client_secret":"Eg7cchbJJnSHK7ic0ukbWOCD7uqAgaSJxf56FPkk","grant_type":"password"}' -H "Content-Type: application/json" -X POST http://localhost/oauth/token
+curl -d '{"username":"djcm95@gmail.com","password":"12345678","client_id":"1","client_secret":"wPUP0t0lo0E7IRi5YbwXZyVZM5EcMwd8PCf6njlh","grant_type":"password"}' -H "Content-Type: application/json" -X POST http://localhost/oauth/token
+
+
+API requiest via CURL using Bearer token as authorizaiton
+
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg0ZjU5OWJiMWY2MDYzMjNiZTY5YWJhN2RmYjQ3MTJjMzE3Y2IxYTZiMDEwMDA0MTJmODVjMDg3NzFlZjkwMjlkMjMzMTA1MWRjZWY4MjU1In0.eyJhdWQiOiIxIiwianRpIjoiODRmNTk5YmIxZjYwNjMyM2JlNjlhYmE3ZGZiNDcxMmMzMTdjYjFhNmIwMTAwMDQxMmY4NWMwODc3MWVmOTAyOWQyMzMxMDUxZGNlZjgyNTUiLCJpYXQiOjE1NTU3NDI0MTksIm5iZiI6MTU1NTc0MjQxOSwiZXhwIjoxNTU1NzQyNzE5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Wu1mxo1hvQVFfXS7ZVBA78kbzeZgTR6M3Y-3pXUkIZXLDTY8Ypai3Qj1h6OJlCiY-S97OHsePRlZ63TYGV8t5yeWFr1xcHvRYfBK_GEK3acBkxWJCMEdwhndZzbraMRn3RRo9UA89mNbKZwdXZFRs8If6DsfDJvB9Ku9xP9s89Or_VNWfSet6t6i_8KHXU3gJpIO3lGqx04YfvAYS6xXtCvtuXlnPDmXBPUJqaHuHKZKomr8kcn0ORYrHDW7vnWwoR0BxzP9l-jXEXI4yRf8LIH4NIzZV_TF90o-26CXqCBD3UY2ED3GxpcE_KgJThfylDyL3g5NJJSDiI7VuhHJQe8vRC3ylpeD__H47WGXlW4jzigSL6T8lAlMmZLKyaXMJq91wmdKL-ub_HJ0EsrEUYTPiMErWJ5cPgxbCNq6EhfvoQaeavv-MlM7Zish_IJn6HWs-LMAN147z_sbbw6KirlDMMZ7GZKue8zgq5cFb8pC-d4Tinm8ylcU2sh0MXsu1RiLe39giTBoP_9s5-WBoPNhGm5GlpsPnBe2hL_DcWyFlw0Nt3a4ph7WNRhbq8fwmVEKbHU0C5egbytsaSn54THlvkeySRSmGY7MjovyJjcbaln53Y2Ov6N00N0paRxVN-IYeKfSfR8dQrFCuJFuCMfTXq1OT2bC_S2oMEQ1dnE" http://localhost/api/profile
 

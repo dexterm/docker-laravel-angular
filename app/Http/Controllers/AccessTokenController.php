@@ -1,4 +1,5 @@
 <?php
+//retrieved from https://gist.github.com/messi89/489473c053e3ea8d9e034b0032effb1d
 namespace App\Http\Controllers;
 
 use App\User;
@@ -7,16 +8,20 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use Psr\Http\Message\ServerRequestInterface;
 use Response;
+use Illuminate\Http\Request;
+
 use \Laravel\Passport\Http\Controllers\AccessTokenController as ATC;
 
 class AccessTokenController extends ATC
 {
     public function issueToken(ServerRequestInterface $request)
     {
+   
         try {
             //get username (default is :email)
             $username = $request->getParsedBody()['username'];
-
+            //echo $request->getParsedBody()['username'] . $request->getParsedBody()['password'];
+            
             //get user
             //change to 'email' if you want
             $user = User::where('email', '=', $username)->first();
