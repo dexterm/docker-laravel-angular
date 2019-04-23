@@ -6,11 +6,11 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 //use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller; 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 
 use Response;
 use Illuminate\Support\Facades\Input;
@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'c_password' => 'required|same:password', 
+            'c_password' => 'required|same:password',
         ]);
     }*/
 
@@ -80,19 +80,19 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8',
-            'c_password' => 'required|same:password', 
-            'mobile' => 'required|min:10'
+            'c_password' => 'required|same:password'
+            //'mobile' => 'required|min:10'
         ]);
-    
+
         if ($valid->fails()) {
             $json_response['code'] = 400;
             $json_response['message'] = $valid->errors()->all();
             $json_response['data'] = $valid->errors()->all();
             return \Response::json($json_response, 400);
         }
-    
+
         $data = request()->only('email','name','password','mobile');
-    
+
         $data = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -102,15 +102,15 @@ class RegisterController extends Controller
         ]);
 
         // And created user until here.
-    
+
         //$client = Client::where('password_client', 1)->first();
         $client = DB::table('oauth_clients', 1)->first();
 
         //$client = db::where('oauth_clients', 3)->first();
 
-    
+
         // Is this $request the same request? I mean Request $request? Then wouldn't it mess the other $request stuff? Also how did you pass it on the $request in $proxy? Wouldn't Request::create() just create a new thing?
-    
+
         $request->request->add([
             'grant_type'    => 'password',
             'client_id'     => $client->id,
@@ -119,18 +119,18 @@ class RegisterController extends Controller
             'password'      => $data['password'],
             'scope'         => null,
         ]);
-    
+
 
         Auth::user();
-        // Fire off the internal request. 
+        // Fire off the internal request.
         $token = Request::create(
             'oauth/token',
             'POST'
         );
         $json_response['message'] = array("USER_REGISTER_SUCCESS");
         $json_response['data'] = array("USER_REGISTER_SUCCESS");
-        return response()->json($json_response, 200); 
+        return response()->json($json_response, 200);
         //return \Route::dispatch($token);
-        
+
     }
 }

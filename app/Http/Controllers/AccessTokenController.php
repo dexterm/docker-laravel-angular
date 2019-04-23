@@ -16,12 +16,12 @@ class AccessTokenController extends ATC
 {
     public function issueToken(ServerRequestInterface $request)
     {
-   
+
         try {
             //get username (default is :email)
             $username = $request->getParsedBody()['username'];
             //echo $request->getParsedBody()['username'] . $request->getParsedBody()['password'];
-            
+
             //get user
             //change to 'email' if you want
             $user = User::where('email', '=', $username)->first();
@@ -43,11 +43,11 @@ class AccessTokenController extends ATC
             $user->put('access_token', $data['access_token']);
             $user->put('expires_in', $data['expires_in']);
             $user->put('refresh_token', $data['refresh_token']);
-            
+
 
             //return Response::json(array($user)); //returns json output as [{name:'XYX,blah}]
             return Response::json($user); //returns json output as {name:'XYX',email:'xyz@whatever.com'}]
-            
+
         }
         catch (ModelNotFoundException $e) { // email notfound
             //return error message
@@ -55,7 +55,7 @@ class AccessTokenController extends ATC
         }
         catch (OAuthServerException $e) { //password not correct..token not granted
             //return error message
-            return response(["message" => "The user credentials were incorrect.', 6, 'invalid_credentials"], 500);
+            return response(["message" => "The user credentials are incorrect."], 401);
         }
         catch (Exception $e) {
             ////return error message

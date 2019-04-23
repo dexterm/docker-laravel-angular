@@ -46,6 +46,7 @@ Route::post('oauth/token', 'AccessTokenController@issueToken'); //customised rou
 Route::post('auth/google', 'AuthController@google');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/skill/{skill}', 'SkillsController@getSkill');
 
 //Auth::routes();
 

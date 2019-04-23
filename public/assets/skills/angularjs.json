@@ -1,0 +1,33 @@
+{
+  "tags": [
+    "angularjs",
+    "javascript",
+    "best practices"
+  ],
+  "content": [
+    {
+      "type": 0,
+      "url": "https://medium.com/@_jmoller/javascript-conventions-and-best-practices-9e980751c70f",
+      "title": "Javascript Conventions and Best Practices",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://medium.com/@bretcameron/how-to-make-your-code-faster-using-javascript-sets-b432457a4a77",
+      "title": "How to make your code faster using JavaScript Sets",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://jacobward.io/post/wait-for-render-update-angularjs",
+      "title": "Wait for content to be updated and rendered in AngularJS 1.x",
+      "date": "",
+      "category": "",
+      "content": ""
+    }
+  ]
+}
