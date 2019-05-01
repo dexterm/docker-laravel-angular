@@ -1,0 +1,50 @@
+{
+  "tags": [
+    "docker",
+    "docker-compose",
+    "docker-service"
+  ],
+  "content": [
+    {
+      "type": 0,
+      "url": "https://hub.docker.com/search/?type=edition&amp;offering=community",
+      "title": "Setup docker depending on your OS",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://docs.docker.com/install/linux/docker-ce/ubuntu/",
+      "title": "Docker for ubuntu",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/",
+      "title": "How To Remove Docker Containers, Images, Volumes, and Networks",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose",
+      "title": "How To Set Up Laravel, Nginx, and MySQL with Docker Compose         Download Working code from <a href='https://github.com/dexterm/laravel-docker' my repo</a>",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://codeburst.io/scaling-out-with-docker-and-nginx-8eda9fb1654c",
+      "title": "Scaling Out With Docker and Nginx",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+  ]
+}
+

@@ -1,0 +1,38 @@
+Laravel: change public html to public_html, the right way
+then go to your public_html/index.php and add, just after the line where 
+$app is created:
+
+$app->bind('path.public', function() {
+    return __DIR__;
+});
+this will bind the document root to he current file path, where index.php exists
+also, to fix the path for scripts used in CLI mode or Artisan script, you should add the code below to the 
+file /bootstrap/app.php
+
+$app->bind('path.public', function() {
+    return base_path().'/public_html';
+});
+-----------------
+HOW TO CLEAR CACHE USING BROWSER TO TRIGGER artisan command
+
+Most of the shared hosting providers don’t provide SSH access to the systems. In that case, you can 
+clear Laravel cache by calling URL in the browser. You can simply place the below code in your 
+routes/web.php file of Laravel application. Then access this URL in the browser to clear the cache of 
+Laravel application.
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+Clear Config
+Route::get('/clear-cache', function() {
+    Artisan::call('config:cache');
+    return "Config Cache is cleared";
+});
+
+--------------
+SHARED HOSTING file path
+is_dir(): open_basedir restriction in effect. File(D:\Proyectos\Miproyecto\resources\views/vendor/notifications) is not 
+within the allowed path(s): (C:/Inetpub/vhosts//clubhuellas.com;C:\Windows\Temp)
+Solution: go to folder bootstrap/cache and rename config.php to anything you want and reload site.
+

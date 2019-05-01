@@ -1,0 +1,51 @@
+{
+  "tags": [
+    "python",
+    "stack frame",
+    "multiprocessing"
+  ],
+  "content": [
+    {
+      "type": 0,
+      "url": "",
+      "title": "Getting started with git",
+      "date": "",
+      "category": "",
+      "content": "<h3>Create an empty Git repository or reinitialize an existing one</h3>
+                  <h5>cd <folder_name></h5><hr/>
+                  <h5>git init</h5><hr/>
+                  <h5>git add .</h5><hr/>
+                  <h5>git commit</h5><hr>
+      "
+    },
+    {
+      "type": 1,
+      "url": "",
+      "title": "Frequently used git commands for setting up git on your system",
+      "date": "",
+      "category": "",
+      "content": "<h3>Setting your email address for every repository on your computer</h3>
+       <h5>git config --global user.email \"email@example.com\"</h5><hr/>
+       <h3>Setting your name for every repository on your computer</h3>
+       <h5>git config --global user.name "John Doe"</h5><hr/>
+      <h3>Setting your email address for a single repository</h3>
+      <h5>git config user.email "email@example.com"</h5><hr/>
+
+      <h3>Setting your email address for a single repository</h3>
+      <h5>git config user.name "John Doe"</h5><hr/>
+
+      <h3>Add a new remote</h3>
+      <h5>git remote add origin git@github.com:User/UserRepo.git</h5><hr/>
+
+      <h3>Modify url of remote repository</h3>
+      <h5>git remote add origin git@github.com:User/UserRepo.git</h5>
+
+       "
+    },
+  ]
+}
+
+
+
+
+

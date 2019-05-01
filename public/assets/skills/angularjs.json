@@ -28,6 +28,22 @@
       "date": "",
       "category": "",
       "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://scotch.io/@hardikkaji/getting-started-with-webpack-and-es6-with-angular-16x-and-bootstrap-part-1",
+      "title": "Getting started with Webpack and ES6 (Angular 1.6.x and Bootstrap)",
+      "date": "",
+      "category": "",
+      "content": ""
+    },
+    {
+      "type": 0,
+      "url": "https://github.com/dexterm/angularjs-es6-starter-kit",
+      "title": "Fully working boiler Plate of (Webpack and ES6) (Angular 1.6.x and Bootstrap)",
+      "date": "",
+      "category": "",
+      "content": ""
     }
   ]
 }

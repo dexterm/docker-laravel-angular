@@ -6,7 +6,7 @@
   ],
   "content": [
     {
-      "type": 1,
+      "type": 0,
       "url": "",
       "title": "Bitwise Truth Table",
       "date": "",
@@ -14,12 +14,12 @@
       "content": "<p><img src=\"/assets/images/truth-table-2.png\" Alt = \"Bitwise truth table\">"
     },
     {
-      "type": 1,
-      "url": "http://www.pythontutor.com/c.html#code=/*%0A%20*%20th.c%0A%20*%0A%20*%20%20Created%20on%3A%2005-Apr-2019%0A%20*%20%20%20%20%20%20Author%3A%20dexter%0A%20*/%0A%0A%0A%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cstdint.h%3E%0A%0Astruct%20record%20%20%7B%0A%20%20%20%20int16_t%20%20id%3B%0A%20%20%20%20//char%20*%20name%3B%0A%20%20%20%20struct%20record%20*%20next%3B%0A%20%20%20%20struct%20record%20*left%3B%0A%20%20%20%20struct%20record%20*%20right%3B%0A%7D%3B%0A%0Astruct%20record%20*%20newNode%28int%20i%29%0A%7B%0A%20%20%20%20struct%20record%20*%20node%20%3D%20calloc%281,%20sizeof%28%20struct%20record%29%20%29%3B%0A%20%20%20%20node-%3Eid%20%3D%20i%3B%0A%20%20%20%20return%20node%3B%0A%7D%0A%0Aint%20max%28int%20a,%20int%20b%29%0A%7B%0A%20%20%20return%20%28a%20%3E%20b%29%20%3F%20a%20%3Ab%3B%0A%7D%0A%0Aint%20getHeight%28%20struct%20record%20*%20head%29%0A%7B%0A%20%20%20%20if%20%28head%20%3D%3D%20NULL%29%0A%20%20%20%20%20%20%20%20return%200%3B%0A%0A%20%20%20%20int%20lh%20%3D%20getHeight%28%20head-%3Eleft%29%3B%0A%20%20%20%20int%20rh%20%3D%20getHeight%28%20head-%3Eright%29%3B%0A%0A%20%20%20%20printf%28%22lh%20%3D%20%25d,%20rh%20%3D%20%25d%5Cn%22,%20lh,%20rh%29%3B%0A%20%20%20%20return%201%20%2B%20max%28lh,%20rh%29%3B%0A%7D%0A%0Avoid%20addNode%28%20struct%20record%20**%20head,%20struct%20record%20*%20node%29%0A%7B%0A%20%20%20%20if%20%28%20%28*head%29%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%28*head%29%20%3D%20node%3B%0A%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%7Delse%7B%0A%20%20%20%20%20%20%20%20if%20%28%20node-%3Eid%20%3C%20%28*head%29-%3Eid%20%29%0A%20%20%20%20%20%20%20%20%20%20%20%20addNode%28%20%26%28*head%29-%3Eleft,%20node%29%3B%0A%20%20%20%20%20%20%20%20else%0A%20%20%20%20%20%20%20%20%20%20%20%20addNode%28%20%26%28*head%29-%3Eright,%20node%29%3B%0A%20%20%20%20%7D%0A%0A%7D%0A%0Aint%20main%20%28int%20argc,%20char%20*%20argv%5B%5D%29%0A%7B%0A%20%20%20%20%20%20/*%20Constructed%20binary%20tree%20is%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2025%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20/%20%20%20%5C%0A%20%20%20%20%20%20%20%20%20%20%20%2022%20%20%20%20%20%2029%0A%20%20%20%20%20%20%20%20%20%20/%0A%20%20%20%20%20%20%20%2017%0A%20%20%20%20%20%20%20%20%20%5C%0A%20%20%20%20%20%20%20%20%20%2020%0A%0A%20%20%20%20%20%20*/%0A%0A%20%20%20%20struct%20record%20*%20head%20%3D%20NULL%3B%0A%20%20%20%20addNode%28%26head,%20newNode%2825%29%20%29%3B%0A%20%20%20%20addNode%28%26head,%20newNode%2822%29%20%29%3B%0A%20%20%20%20addNode%28%26head,%20newNode%2817%29%20%29%3B%0A%20%20%20%20addNode%28%26head,%20newNode%2829%29%20%29%3B%0A%20%20%20%20addNode%28%26head,%20newNode%2820%29%20%29%3B%0A%20%20%20%20printf%28%22Tree%20Height%20%3D%20%25d%20%5Cn%22,%20getHeight%28%20head%29%20%29%3B%0A%20%20%20%20return%200%3B%0A%0A%7D&curInstr=172&mode=display&origin=opt-frontend.js&py=c&rawInputLstJSON=%5B%5D",
+      "type": 0,
+      "url": "http://www.pythontutor.com/c.html#code=/",
       "title": "Height of a binary tree with stack frame visualisation",
       "date": "",
-      "category": "",
-      "content": "<div ng-include=\"'/components/skills/binarytree.html'\"></div>"
+      "category": "", 
+      "content": "<div ng-include=\"'components/skills/binarytree.html'\"></div>"
     }
   ]
 }
