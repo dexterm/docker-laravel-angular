@@ -16,7 +16,7 @@ services:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: secret
       DB_PORT: 3306
-      DB_HOST: db
+      DB_HOST: db #note this is the name of the mysql service defined down below
       #DOCKER_HOST_IP: 192.168.1.100
       #DOCKER_HOST: tcp://docker-in-docker:2375
     working_dir: /var/www
