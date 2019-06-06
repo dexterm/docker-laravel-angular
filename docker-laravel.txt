@@ -7,3 +7,5 @@ https://www.cloudreach.com/blog/containerize-this-php-apache-mysql-within-docker
 https://tharris.io/post/docker-and-laravel-development-environment/
 
 https://www.howtoforge.com/dockerizing-laravel-with-nginx-mysql-and-docker-compose/
+
+https://hackernoon.com/stop-manually-provisioning-aws-for-laravel-use-terraform-instead-11b8b360617c
