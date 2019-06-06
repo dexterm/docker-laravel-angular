@@ -1,0 +1,9 @@
+https://www.bogotobogo.com/DevOps/Docker/Docker-Compose-Nginx-Reverse-Proxy-Multiple-Containers.php
+
+https://dev.to/veevidify/docker-compose-up-your-entire-laravel-apache-mysql-development-environment-45ea
+
+https://www.cloudreach.com/blog/containerize-this-php-apache-mysql-within-docker-containers/
+
+https://tharris.io/post/docker-and-laravel-development-environment/
+
+https://www.howtoforge.com/dockerizing-laravel-with-nginx-mysql-and-docker-compose/
