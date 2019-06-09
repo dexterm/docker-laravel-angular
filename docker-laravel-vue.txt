@@ -10,3 +10,5 @@ https://github.com/fireworkweb/vue-laravel-mix.git
         url = https://github.com/guillaumebriday/todolist-frontend-vuejs.git
         url = https://github.com/elbic/docker-nginx-laravel-vue-mysql.git
 
+https://github.com/sanchescom/apartment-docker-laravel-vuejs/blob/master/docker-compose.yml
+https://developpaper.com/building-the-development-environment-of-laravel-and-vue-project-with-docker/
