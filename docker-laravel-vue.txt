@@ -1,0 +1,12 @@
+https://medium.com/p/c561187e1bb9/responses/show
+https://medium.com/@zwegrzyniak/docker-compose-and-webpack-dev-server-hot-reloads-b73b65d13d79
+https://github.com/gliterd/docker-laravel-vuejs.git
+http://rodrigo.ebrmx.com/github_/guillaumebriday/laravel-blog
+docker-compose laravel vuejs
+https://github.com/elbic/docker-nginx-laravel-vue-mysql
+https://github.com/fireworkweb/vue-laravel-mix.git
+        url = https://github.com/alefesouza/laravel-vue-boilerplate.git
+        url = https://github.com/guillaumebriday/laravel-blog.git
+        url = https://github.com/guillaumebriday/todolist-frontend-vuejs.git
+        url = https://github.com/elbic/docker-nginx-laravel-vue-mysql.git
+
